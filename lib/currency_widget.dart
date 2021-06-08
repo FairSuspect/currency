@@ -27,7 +27,7 @@ class _CurrencyWidgetState extends State<CurrencyWidget> {
           children: [
             Text("За "),
             LimitedBox(
-              maxWidth: 150,
+              maxWidth: 100,
               maxHeight: 25,
               child: TextFormField(
                 key: Key(widget.currency?.charCode ?? "..."),
@@ -65,7 +65,7 @@ class _CurrencyWidgetState extends State<CurrencyWidget> {
             subtitle: _subtitle(),
             trailing: Text(widget.currency?.charCode ?? "..."),
             leading: Container(
-              width: 140,
+              width: MediaQuery.of(context).size.width == 800 ? 140 : 100,
               child: Center(
                 child: Row(
                   children: [
