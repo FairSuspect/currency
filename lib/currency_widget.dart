@@ -27,9 +27,10 @@ class _CurrencyWidgetState extends State<CurrencyWidget> {
           children: [
             Text("За "),
             LimitedBox(
-              maxWidth: 100,
+              maxWidth: 150,
               maxHeight: 25,
               child: TextFormField(
+                key: Key(widget.currency?.charCode ?? "..."),
                 decoration: InputDecoration(
                     border: OutlineInputBorder(gapPadding: 1), counterText: ''),
                 initialValue: customValue.toStringAsFixed(0),
@@ -51,7 +52,7 @@ class _CurrencyWidgetState extends State<CurrencyWidget> {
   Widget build(BuildContext context) {
     double value = widget.currency?.value ?? -1;
     double previous = widget.currency?.previous ?? -1;
-    double change = ((value - previous) / (previous));
+    double change = ((value - previous) / (previous)) * 100;
 
     return LimitedBox(
       maxHeight: 150,
@@ -64,12 +65,12 @@ class _CurrencyWidgetState extends State<CurrencyWidget> {
             subtitle: _subtitle(),
             trailing: Text(widget.currency?.charCode ?? "..."),
             leading: Container(
-              width: 90,
+              width: 140,
               child: Center(
                 child: Row(
                   children: [
                     Text(
-                      "${change.toStringAsFixed(4)} %",
+                      "${change.toStringAsFixed(2)} %",
                       style: TextStyle(
                           color: change > 0
                               ? Colors.greenAccent

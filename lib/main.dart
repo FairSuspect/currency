@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
 }
 
 class CurrencyPage extends StatefulWidget {
-  CurrencyPage({Key? key, required this.title}) : super(key: key);
-
+  CurrencyPage({Key? key, required this.title, this.child}) : super(key: key);
+  final Widget? child;
   final String title;
 
   @override
@@ -96,7 +96,7 @@ class _CurrencyPageState extends State<CurrencyPage> {
         actions: [IconButton(onPressed: _reload, icon: Icon(Icons.refresh))],
       ),
       body: Center(
-        child: _future(),
+        child: widget.child ?? _future(),
       ),
     );
   }
